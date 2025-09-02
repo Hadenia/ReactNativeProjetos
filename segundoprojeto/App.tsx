@@ -26,14 +26,7 @@
 
 // const ViewExemplo = () => {
 //   return (
-// 	<View
-// 	  style={{
-// 		flexDirection: "row",
-// 		height: 100,
-// 		padding: 20,
-// 		backgroundColor: "gray",
-// 	  }}
-// 	>
+// 	<View style={{flexDirection: "row",	height: 100, padding: 20,	backgroundColor: "gray", }}>
 // 	  <View style={{ backgroundColor: "red", flex: 0.5 }} />
 // 	  <Text>Olá, mundo!</Text>
 // 	</View>
@@ -192,7 +185,7 @@
 // 	marginHorizontal: 20,
 //   },
 //   text: {
-// 	fontSize: 26,
+// 	fontSize: 40,
 //   },
 // });
 
@@ -216,6 +209,12 @@ const App = () => {
     { id: "4", titulo: "Item 4" },
   ];
 
+
+  const incrementContador = () => {
+	    setContador(contador + 1);
+      console.log(`Contador: ${contador + 1}`);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Switch */}
@@ -227,7 +226,7 @@ const App = () => {
       {/* Button */}
       <View style={styles.caixa}>
         <Text>Você clicou {contador} vezes</Text>
-        <Button title="Clique aqui" onPress={() => setContador(contador + 1)} />
+        <Button title="Clique aqui" onPress={incrementContador} />
       </View>
 
       {/* FlatList */}
