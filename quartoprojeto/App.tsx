@@ -103,7 +103,7 @@ export default function App() {
 
       <TouchableHighlight
         onPress={() => alert("“Ilumina” (fundo fica mais claro/escuro) quando pressionado.")}
-        underlayColor="#ea2727ff"
+        underlayColor="#ab2a73ff"
         style={styles.touchableHighlight}
       >
         <Text>Botão Highlight</Text>
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   touchableOpacity:
   {
     marginTop: 10,
-    backgroundColor: '#ddd',
+    backgroundColor: '#860707ff',
     padding: 10,
     borderRadius: 8,
     marginBottom: 20,

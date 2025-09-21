@@ -15,7 +15,7 @@ export default function App() {
 
     if(tarefa.trim()===''){
       alert('Por favor, insira uma tarefa válida.');
-    //  return; 
+      return; 
     } 
     setDados([...dados, {id: Math.random().toString(), titulo: tarefa, concluido: false}]);
     setTarefa('');
@@ -32,12 +32,12 @@ const confirmarExclusao = (id: string) => {
     "Tem certeza que deseja excluir esta tarefa?",
     [
       {
-        text: "Sim",
+        text: "Não",
         onPress: () => console.log("Cancelado"),
         style: "cancel"
       },
       {
-        text: "Não",
+        text: "Sim",
         onPress: () => removerTarefa(id)
       }
     ]
@@ -45,7 +45,7 @@ const confirmarExclusao = (id: string) => {
 };
 
   const alternarConcluido = (id: string) => {
-     setDados(dados.map(item => item.id === id ? { ...item, concluido: !item.concluido } : item
+     setDados(dados.map(item => item.id === id ? { ...item, concluido: !item.concluido } : item)
   );
 };
 
