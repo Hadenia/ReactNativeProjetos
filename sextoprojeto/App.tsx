@@ -1,3 +1,5 @@
+// //--------------------Exemplo NativeStackNavigator---------------------
+
 import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -21,16 +23,21 @@ function App() {
 
 export default App;
 
+//--------------------Exemplo TabNavigator---------------------
+
 // import * as React from 'react';
 // import { View, Text, StyleSheet } from 'react-native';
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import { Ionicons } from '@expo/vector-icons'; //npm install react-native-vector-icons
+// import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 // import HomeScreen from './screens/home';
 // import AboutScreen from './screens/about';
 
-// const Tab = createBottomTabNavigator();
+// //const Tab = createBottomTabNavigator();
+
+// const Tab = createMaterialTopTabNavigator(); //npm install @react-navigation/material-top-tabs react-native-pager-view
 
 // function App() {
 //   return (
@@ -44,6 +51,8 @@ export default App;
 // }
 
 // export default App;
+
+//--------------------Exemplo DrawerNavigator---------------------
 
 // import 'react-native-gesture-handler';
 // import * as React from 'react';

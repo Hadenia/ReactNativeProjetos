@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button} from 'react-native';
+import styles from '../styles';
 
 function HomeScreen({ navigation }) {
     return (
@@ -9,19 +10,5 @@ function HomeScreen({ navigation }) {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1, 
-        alignItems: 'center', 
-        paddingTop: 20
-    },
-    titulo: {
-        fontWeight: "bold",
-        fontSize: 20,
-        marginBottom: 5,
-        paddingBottom: 20
-    },
-});
 
 export default HomeScreen;
