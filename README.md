@@ -1,6 +1,6 @@
 # Programação de Dispositivos Móveis em 2025.2 - Faculdade Estácio
 
-# Execução
+## Execução
 - Baixar repositório
 - Acessar pasta de projeto (citados abaixo). Ex: _cd segundoprojeto_
 - **npm install**
