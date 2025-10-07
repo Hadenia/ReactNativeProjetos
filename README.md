@@ -47,3 +47,9 @@ Componentes apresentados:
 - TabNavigation
 - DrawerNavigator
 - Estrutura de folha de estilo - style.js
+
+## setimoprojeto
+Aula ministrada em 07/10/2025. \
+**AsyncStorage** (Tema 3 - Módulo 1) \
+Componentes Apresentados:
+- AsyncStorage
