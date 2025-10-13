@@ -141,7 +141,7 @@
 
 //     return (
 //         <View style={styles.item}>
-//             <Switch id={id} onValueChange={() => setIsEnabled(!isEnabled)} value={isEnabled} />
+//             {/* <Switch id={id} onValueChange={() => setIsEnabled(!isEnabled)} value={isEnabled} /> */}
 //             <Text style={styles.titulo}>{texto}</Text>
 //         </View>
 //     );
@@ -245,141 +245,142 @@
 
 //  ------------Exemplo 5 - FlatList com API -------------------
 
-// import React, { Component } from 'react';
-// import { FlatList, StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
-// const baseURL = "https://api.sampleapis.com/coffee/hot";
+const baseURL = "https://api.sampleapis.com/coffee/hot";
 
-// export default class App extends Component {
-//     state = {
-//         data: [],
-//         loading: false
-//     } //não chamar recursivamente o mesmo componente
+export default class App extends Component {
+    state = {
+        data: [],
+        loading: false
+    } //não chamar recursivamente o mesmo componente
 
-//     componentDidMount() {
-//         this.loadRepositories();
-//     }
+    componentDidMount() {
+        this.loadRepositories();
+    }
 
-//     loadRepositories = async () => {
-//         if (this.state.loading) return;
-//         this.setState({ loading: true });
-//         const response = await fetch(baseURL);
-//         const repositories = await response.json();
-//         this.setState({ data: repositories, loading: false });
-//     }
+    loadRepositories = async () => {
+        if (this.state.loading) return;
+        this.setState({ loading: true });
+        const response = await fetch(baseURL);
+        const repositories = await response.json();
+        this.setState({ data: repositories, loading: false });
+    }
 
-//     renderItem = ({ item }) => (
-//         <View style={styles.listItem}>
-//             <Text >{item.title}</Text>
-//         </View>
-//     );
+    renderItem = ({ item }) => (
+        <View style={styles.listItem}>
+            <Text >{item.title}</Text>
+            <Text >{item.id}</Text>
+        </View>
+    );
 
-//     render() {
-//         if (this.state.loading) {
-//         return (
-//             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//                 <Text>Carregando...</Text>
-//             </View>
-//         );
-//     }
-//     return (
-//         <FlatList
-//             style={{ marginTop: 20 }}
-//             contentContainerStyle={styles.list}
-//             data={this.state.data}
-//             keyExtractor={item => item.id.toString()}
-//             renderItem={this.renderItem}
-//             numColumns={2}
-//         />
-//     );
-//     }
-// }
+    render() {
+        if (this.state.loading) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text>Carregando...</Text>
+            </View>
+        );
+    }
+    return (
+        <FlatList
+            style={{ marginTop: 20 }}
+            contentContainerStyle={styles.list}
+            data={this.state.data}
+            keyExtractor={item => item.id.toString()}
+            renderItem={this.renderItem}
+            numColumns={2}
+        />
+    );
+    }
+}
 
-// const styles = StyleSheet.create({
-//     list: {
-//         paddingHorizontal: 20
-//     },
-//     listItem: {
-//         backgroundColor: '#b08261ff',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//         flex: 1,
-//         margin: 5,
-//         height: 100,
-//         elevation: 4,
-//         width: '50%',
-//         padding: 20,
-//         borderColor: '#000',
-//         borderWidth: 1
-//     }
-// });
+const styles = StyleSheet.create({
+    list: {
+        paddingHorizontal: 20
+    },
+    listItem: {
+        backgroundColor: '#b08261ff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        margin: 5,
+        height: 100,
+        elevation: 4,
+        width: '50%',
+        padding: 20,
+        borderColor: '#000',
+        borderWidth: 1
+    }
+});
 
 
 //  ------------Exemplo 6 - Picker-------------------
 
 //necessário instalar npm install @react-native-picker/picker
 
-import React from 'react';
-import { Picker } from '@react-native-picker/picker';
-import { View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+// import React from 'react';
+// import { Picker } from '@react-native-picker/picker';
+// import { View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 
-const pickerItems = [{ estado: "Rio de Janeiro", sigla: "RJ" },
-{ estado: "São Paulo", sigla: "SP" },
-{ estado: "Minas Gerais", sigla: "MG" },
-{ estado: "Espirito Santo", sigla: "ES" },
-{ estado: "Bahia", sigla: "BA" },];
+// const pickerItems = [{ estado: "Rio de Janeiro", sigla: "RJ" },
+// { estado: "São Paulo", sigla: "SP" },
+// { estado: "Minas Gerais", sigla: "MG" },
+// { estado: "Espirito Santo", sigla: "ES" },
+// { estado: "Bahia", sigla: "BA" },];
 
-const App = () => {
-    const [valor, setValor] = React.useState();
-    const [state, setState] = React.useState({ language: 'java' });
+// const App = () => {
+//     const [valor, setValor] = React.useState();
+//     const [state, setState] = React.useState({ language: 'java' });
 
-    return (
-        <View style={styles.container}>
-            <Text style={styles.header}>Exemplo Picker</Text>
-            <Picker style={styles.item} selectedValue={valor}
-                onValueChange={(value, index) => setValor(value)}>
-                {pickerItems.map((opcao) =>
-                    <Picker.Item label={opcao.estado} value={opcao.sigla} key={opcao.sigla} />)}
-            </Picker>
-            <Text style={styles.titulo}>Você selecionou: {valor}</Text>
+//     return (
+//         <View style={styles.container}>
+//             <Text style={styles.header}>Exemplo Picker</Text>
+//             <Picker style={styles.item} selectedValue={valor}
+//                 onValueChange={(value, index) => setValor(value)}>
+//                 {pickerItems.map((opcao) =>
+//                     <Picker.Item label={opcao.estado} value={opcao.sigla} key={opcao.sigla} />)}
+//             </Picker>
+//             <Text style={styles.titulo}>Você selecionou: {valor}</Text>
 
-            <View style={styles.container}>
-                <Picker
-                    selectedValue={state.language}
-                    style={styles.item}
-                    onValueChange={(itemValue, itemIndex) =>
-                        setState({ language: itemValue })
-                    }>
-                    <Picker.Item label="Java" value="java" />
-                    <Picker.Item label="JavaScript" value="js" />
-                    <Picker.Item label="C#" value="csharp" />
-                </Picker>
-            </View>
-        </View>
-    );
-}
+//             <View style={styles.container}>
+//                 <Picker
+//                     selectedValue={state.language}
+//                     style={styles.item}
+//                     onValueChange={(itemValue, itemIndex) =>
+//                         setState({ language: itemValue })
+//                     }>
+//                     <Picker.Item label="Java" value="java" />
+//                     <Picker.Item label="JavaScript" value="js" />
+//                     <Picker.Item label="C#" value="csharp" />
+//                 </Picker>
+//             </View>
+//         </View>
+//     );
+// }
 
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: StatusBar.currentHeight,
-        marginHorizontal: 16
-    },
-    item: {
-        backgroundColor: '#fffccc',
-        padding: 8,
-        marginVertical: 8,
-        elevation: 6
-    },
-    header: {
-        fontSize: 32,
-        backgroundColor: '#fff'
-    },
-    titulo: {
-        fontSize: 24
-    }
-});
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         paddingTop: StatusBar.currentHeight,
+//         marginHorizontal: 16
+//     },
+//     item: {
+//         backgroundColor: '#fffccc',
+//         padding: 8,
+//         marginVertical: 8,
+//         elevation: 6
+//     },
+//     header: {
+//         fontSize: 32,
+//         backgroundColor: '#fff'
+//     },
+//     titulo: {
+//         fontSize: 24
+//     }
+// });
 
-export default App;
+// export default App;
 
