@@ -53,3 +53,12 @@ Aula ministrada em 07/10/2025. \
 **AsyncStorage** (Tema 3 - Módulo 1) \
 Componentes Apresentados:
 - AsyncStorage
+
+## oitavoprojeto
+Aula ministrada em 14/10/2025. \
+Conteúdo: Banco de Dados - SqLite (Tema 3 - Módulo 2) \
+instalações feitas: \
+
+- npm install expo-sqlite \
+- npm i @react-navigation/native @react-navigation/native-stack \
+- npm install react-native-screens react-native-safe-area-context \
