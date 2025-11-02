@@ -62,3 +62,11 @@ instalações feitas:
 - npm install expo-sqlite 
 - npm i @react-navigation/native @react-navigation/native-stack 
 - npm install react-native-screens react-native-safe-area-context 
+
+## Server / Loja2021
+Aula ministrada em 21/10/2025 \
+**Banco de dados orientado a objetos e Banco de Dados NoSQL**
+
+- Apresentação banco REAL
+- Banco de Dados MongoDB
+- Instalações necessárias: MongoDB e Postman
