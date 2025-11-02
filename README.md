@@ -64,9 +64,17 @@ instalações feitas:
 - npm install react-native-screens react-native-safe-area-context 
 
 ## Server / Loja2021
-Aula ministrada em 21/10/2025 \
+Aula ministrada em 28/10/2025 \
 **Banco de dados orientado a objetos e Banco de Dados NoSQL**
 
 - Apresentação banco REAL
 - Banco de Dados MongoDB
 - Instalações necessárias: MongoDB e Postman
+
+## novoprojeto e decimoprojeto
+Aula ministrada em 04/11/2025 \
+**Componentes para conexão em rede e Persistência remota com controle de acesso na arquitetura REST**
+
+- Chamada de requisições HTTP em projeto React Native
+- Fetch e Axios
+- Authorizations
