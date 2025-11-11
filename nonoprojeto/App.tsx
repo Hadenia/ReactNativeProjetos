@@ -1,7 +1,8 @@
 /* FETCH API*/
 
 // import React, { useEffect, useState } from 'react';
-// import { FlatList, Text, View, StyleSheet, ActivityIndicator, Platform, TouchableOpacity} from 'react-native';
+// import { FlatList, Text, View, StyleSheet, ActivityIndicator, Platform, TouchableOpacity, TextInput} from 'react-native';
+// import { styles } from './CommonStyles';
 
 // interface Produto {
 //   _id: number;
@@ -14,10 +15,13 @@
 //   const [data, setData] = useState<Produto[]>([]);
 //   const [error, setError] = useState<string | null>(null);
 
+//   const [nome, setNome] = useState('');
+//   const [quantidade, setQuantidade] = useState('');
+
 //  const API_URL = Platform.select({
 //     ios: 'http://localhost:3000/',
 //     android: __DEV__ 
-//       ? 'http://192.168.1.5:3000/' // Substitua SEU_IP_LOCAL pelo seu IP
+//       ? 'http://192.168.0.7:3000/' // Substitua SEU_IP_LOCAL pelo seu IP
 //       : 'http://10.0.2.2:3000/',
 //   });
 
@@ -47,13 +51,16 @@
 //         },
 //         body: JSON.stringify({
 //           codigo: Math.floor(Math.random() * 1000),
-//           nome: 'Novo Produto',
-//           quantidade: 10
+//           nome: nome,
+//           quantidade: parseInt(quantidade.trim(),10)
 //         })
 //       });
 
 //       const data = await response.json();
 //       console.log('Produto adicionado:', data);
+
+//       setNome('');
+//       setQuantidade('');
       
 //       // Atualiza a lista
 //       fetch(API_URL)
@@ -82,6 +89,10 @@
 //         <ActivityIndicator size="large" color="#0000ff" />
 //       ) : (
 //         <View style={styles.content}>
+//           <Text>Nome do Produto:</Text>
+//            <TextInput value={nome} onChangeText={setNome} placeholder='Nome do Produto' style={styles.input}></TextInput>
+//            <Text>Quantidade:</Text>
+//            <TextInput value={quantidade}  onChangeText={setQuantidade} placeholder='Quantidade' style={styles.input}></TextInput>
 //           <TouchableOpacity 
 //             style={styles.addButton}
 //             onPress={addProduto}
@@ -108,57 +119,14 @@
 //   );
 // };
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     paddingTop: 50,
-//   },
-//   content: {
-//     flex: 3,
-//     flexDirection: 'column',
-//     justifyContent: 'space-between',
-//   },
-//   title: {
-//     fontSize: 18,
-//     color: '#333',
-//     textAlign: 'center',
-//     paddingBottom: 10,
-//     fontWeight: 'bold',
-//   },
-//   itemContainer: {
-//     padding: 10,
-//     borderBottomWidth: 1,
-//     borderBottomColor: '#ccc',
-//   },
-//   itemText: {
-//     fontSize: 16,
-//   },
-//   errorText: {
-//     color: 'red',
-//     fontSize: 16,
-//     textAlign: 'center',
-//   },
-//     addButton: {
-//     backgroundColor: '#4CAF50',
-//     padding: 15,
-//     borderRadius: 5,
-//     marginBottom: 20,
-//     alignItems: 'center'
-//   },
-//   addButtonText: {
-//     color: 'white',
-//     fontSize: 16,
-//     fontWeight: 'bold'
-//   }
-// });
-
 // export default App;
 
 
 //npm install axios
 import React, { useEffect, useState } from 'react';
-import { FlatList, Text, View, StyleSheet, ActivityIndicator, Platform, TouchableOpacity} from 'react-native';
+import { FlatList, Text, View, StyleSheet, ActivityIndicator, Platform, TouchableOpacity, TextInput} from 'react-native';
 import axios from 'axios';
+import { styles } from './CommonStyles';
 
 interface Produto {
   _id: number;
@@ -170,11 +138,14 @@ const App = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState<Produto[]>([]);
   const [error, setError] = useState<string | null>(null);
+  
+  const [nome, setNome] = useState('');
+  const [quantidade, setQuantidade] = useState('');
 
   const API_URL = Platform.select({
     ios: 'http://localhost:3000/',
     android: __DEV__ 
-      ? 'http://192.168.1.5:3000/' 
+      ? 'http://192.168.0.7:3000/' 
       : 'http://10.0.2.2:3000/',
   });
 
@@ -210,12 +181,12 @@ const App = () => {
     try {
       const novoProduto = {
         codigo: Math.floor(Math.random() * 1000),
-        nome: 'Novo Produto Axios',
-        quantidade: 100
+        nome: nome,
+        quantidade: parseInt(quantidade.trim(), 10)
       };
 
-      const response = await api.post('new', novoProduto);
-      console.log('Produto adicionado:', response.data);
+     const response = await api.post('new', novoProduto);
+     console.log('Produto adicionado:', response.data);
       
       // Atualiza a lista
       listarProdutos();
@@ -241,6 +212,10 @@ const App = () => {
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
         <View style={styles.content}>
+          <Text>Nome do Produto:</Text>
+          <TextInput value={nome} onChangeText={setNome} placeholder='Nome do Produto' style={styles.input}></TextInput>
+          <Text>Quantidade:</Text>
+          <TextInput value={quantidade}  onChangeText={setQuantidade} placeholder='Quantidade' style={styles.input}></TextInput>
           <TouchableOpacity 
             style={styles.addButton}
             onPress={addProduto}
@@ -267,49 +242,5 @@ const App = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 50,
-  },
-  content: {
-    flex: 3,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  title: {
-    fontSize: 18,
-    color: '#333',
-    textAlign: 'center',
-    paddingBottom: 10,
-    fontWeight: 'bold',
-  },
-  itemContainer: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  itemText: {
-    fontSize: 16,
-  },
-  errorText: {
-    color: 'red',
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  addButton: {
-    backgroundColor: '#4CAF50',
-    padding: 15,
-    borderRadius: 5,
-    marginBottom: 20,
-    alignItems: 'center'
-  },
-  addButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold'
-  }
-});
-
-export default App;
+ export default App;
 
